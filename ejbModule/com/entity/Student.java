@@ -339,7 +339,17 @@ public class Student implements Serializable  {
 				+ ", emContacts=" + emContacts + "]";
 	}
 
-
+	public String toStringEncode() {
+		return "{" + s_id + "}{" + firstName
+				+ "}{" + lastName + "}{" + streetAddress
+				+ "}{" + city + "}{" + state + "}{" + zip
+				+ "}{" + telephoneNumber + "}{" + email
+				+ "}{" + dataOfSurvey + "}{"
+				+ likedAboutCampus + "}{" + originOfInterest
+				+ "}{" + likelyhoodOfRecommendation
+				+ "}{" + raffle + "}{" + comments
+				+ "}{" + emContacts + "}";
+	}
 
 
 }

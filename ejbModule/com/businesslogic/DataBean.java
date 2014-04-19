@@ -73,86 +73,6 @@ public class DataBean implements DataBeanRemote {
 	  }
 
 	  
-	  
-	  
-	  
-	  
-//	  public boolean insertStudentSurveyRecord(Student newStudent) {
-//		  	System.out.println("[INFO] - Method Called :=: insertStudentSurveyRecord");
-//		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-//		    EntityManager em = factory.createEntityManager();
-//		    em.getTransaction().begin(); 
-//		    em.persist(newStudent);
-//		    em.getTransaction().commit();
-//		    em.close();
-//		    return true;
-//	  }
-	  
-	  public boolean insertStudentSurveyRecord(Student newStudent,  EmContact emContact1, EmContact emContact2) {
-		  	System.out.println("[INFO] - Method Called :=: insertStudentSurveyRecord");
-		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		    EntityManager em = factory.createEntityManager();
-		    em.getTransaction().begin(); 
-		    
-		    Student tempStudent = newStudent;
-		    em.persist(tempStudent);
-		    
-
-		    
-		    if (emContact1 != null) {
-			   EmContact tempEM = emContact1;
-			   em.persist(tempEM);
-			   tempEM.setStudent(tempStudent);
-			   //tempStudent.getEmContacts().add(emContact);
-			   em.persist(tempEM);
-			   em.persist(tempStudent);
-		    }
-		    
-		    if (emContact2 != null) {
-			   EmContact tempEM = emContact2;
-			   em.persist(tempEM);
-			   tempEM.setStudent(tempStudent);
-			   //tempStudent.getEmContacts().add(emContact);
-			   em.persist(tempEM);
-			   em.persist(tempStudent);
-		    }
-		    
-//		   EmContact tempEM = emContact;
-//		   em.persist(tempEM);
-//		   tempStudent.getEmContacts().add(emContact);
-//		  
-//		   em.persist(tempEM);
-//		    em.persist(tempStudent);
-		    
-		
-		    em.getTransaction().commit();
-		    em.close();
-		    return true;
-	  }
-	  
-	  //this will remove the student from the database along with all of his or her emergency contacts
-	  //if the id passed it find a match to delete it deletes it and returns true, else it returns false.
-	  public boolean removeStudentRecord(int s_id) {
-		  	System.out.println("[INFO] - Method Called :=: removeStudentRecord");
-		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		    EntityManager em = factory.createEntityManager();
-		    em.getTransaction().begin(); 
-		    Query q = em.createQuery("select t from Student  t");
-		    @SuppressWarnings("unchecked")
-			List<Student> s = q.getResultList();
-		    boolean jobDone = false;
-		    for (int i = 0; i < s.size(); i++) {
-				if ( s.get(i).getS_id() == s_id) {
-					System.out.println("[Deleting This Record] :=: " + s.get(i));
-					em.remove(s.get(i));
-					em.getTransaction().commit();
-					jobDone = true;
-				}
-			}
-		    return jobDone;		    
-	  }
-	  
-	  
 	  public List<Student> searchByParameters(String last, String first, String cityy, String statee) {
 		  System.out.println("[INFO] - Method Called :=: searchByParameters");
 		  String qq = createQueryString(last, first, cityy, statee);
@@ -167,6 +87,86 @@ public class DataBean implements DataBeanRemote {
 		    em.close();
 		    return s;
 	  }
+	  
+	  
+	  
+//	  public boolean insertStudentSurveyRecord(Student newStudent) {
+//		  	System.out.println("[INFO] - Method Called :=: insertStudentSurveyRecord");
+//		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//		    EntityManager em = factory.createEntityManager();
+//		    em.getTransaction().begin(); 
+//		    em.persist(newStudent);
+//		    em.getTransaction().commit();
+//		    em.close();
+//		    return true;
+//	  }
+	  
+//	  public boolean insertStudentSurveyRecord(Student newStudent,  EmContact emContact1, EmContact emContact2) {
+//		  	System.out.println("[INFO] - Method Called :=: insertStudentSurveyRecord");
+//		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//		    EntityManager em = factory.createEntityManager();
+//		    em.getTransaction().begin(); 
+//		    
+//		    Student tempStudent = newStudent;
+//		    em.persist(tempStudent);
+//		    
+//
+//		    
+//		    if (emContact1 != null) {
+//			   EmContact tempEM = emContact1;
+//			   em.persist(tempEM);
+//			   tempEM.setStudent(tempStudent);
+//			   //tempStudent.getEmContacts().add(emContact);
+//			   em.persist(tempEM);
+//			   em.persist(tempStudent);
+//		    }
+//		    
+//		    if (emContact2 != null) {
+//			   EmContact tempEM = emContact2;
+//			   em.persist(tempEM);
+//			   tempEM.setStudent(tempStudent);
+//			   //tempStudent.getEmContacts().add(emContact);
+//			   em.persist(tempEM);
+//			   em.persist(tempStudent);
+//		    }
+//		    
+////		   EmContact tempEM = emContact;
+////		   em.persist(tempEM);
+////		   tempStudent.getEmContacts().add(emContact);
+////		  
+////		   em.persist(tempEM);
+////		    em.persist(tempStudent);
+//		    
+//		
+//		    em.getTransaction().commit();
+//		    em.close();
+//		    return true;
+//	  }
+	  
+	  //this will remove the student from the database along with all of his or her emergency contacts
+	  //if the id passed it find a match to delete it deletes it and returns true, else it returns false.
+//	  public boolean removeStudentRecord(int s_id) {
+//		  	System.out.println("[INFO] - Method Called :=: removeStudentRecord");
+//		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//		    EntityManager em = factory.createEntityManager();
+//		    em.getTransaction().begin(); 
+//		    Query q = em.createQuery("select t from Student  t");
+//		    @SuppressWarnings("unchecked")
+//			List<Student> s = q.getResultList();
+//		    boolean jobDone = false;
+//		    for (int i = 0; i < s.size(); i++) {
+//				if ( s.get(i).getS_id() == s_id) {
+//					System.out.println("[Deleting This Record] :=: " + s.get(i));
+//					em.remove(s.get(i));
+//					em.getTransaction().commit();
+//					jobDone = true;
+//				}
+//			}
+//		    return jobDone;		    
+//	  }
+	  
+	  
+
 	  
 		/**
 	 * This method is used to build the query string based on the passed in inputs.
