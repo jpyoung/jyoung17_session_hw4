@@ -97,8 +97,8 @@ public class EmContact implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "EmContact [e_id=" + e_id + ", eName=" + eName + ", ePhone="
-				+ ePhone + ", eEmail=" + eEmail + ", student=" + student.getS_id() + "]";
+		return "{" + e_id + "}{" + eName + "}{"
+				+ ePhone + "}{" + eEmail + "}{" + student.getS_id() + "}";
 	}
 
 

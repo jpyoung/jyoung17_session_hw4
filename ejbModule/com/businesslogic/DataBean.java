@@ -73,6 +73,7 @@ public class DataBean implements DataBeanRemote {
 		    
 		    List<String> rt = new ArrayList<String>();
 		    for (int i = 0; i < s.size(); i++) {
+		    	System.out.println("" + s.get(i).toString());
 				rt.add(s.get(i).toStringEncode());
 			}
 		    em.close();
@@ -81,19 +82,21 @@ public class DataBean implements DataBeanRemote {
 
 	  
 	  public List<String> searchByParameters(String last, String first, String cityy, String statee) {
-		  System.out.println("[INFO] - Method Called :=: searchByParameters");
+		  System.out.println("[INFO] - Method Called :=: searchByParameters : " + last + ":" + first +":" + cityy + ":" + statee);
 		  String qq = createQueryString(last, first, cityy, statee);
+		  System.out.println(qq);
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		    EntityManager em = factory.createEntityManager();
 		    em.getTransaction().begin(); 
 		    Query q = em.createNativeQuery(qq, Student.class);
-		    q.setParameter("firstname", "L");
+		    //q.setParameter("firstname", "L");
 		    q.setHint("eclipselink.refresh", "true");
 		    @SuppressWarnings("unchecked")
 			List<Student> s = q.getResultList();
 		    
 		    List<String> rt = new ArrayList<String>();
 		    for (int i = 0; i < s.size(); i++) {
+		    		System.out.println("" + s.get(i).toString());
 				rt.add(s.get(i).toStringEncode());
 			}
 		    em.close();
