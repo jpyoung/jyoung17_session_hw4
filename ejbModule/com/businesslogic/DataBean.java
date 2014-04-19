@@ -19,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.jws.WebService;
 
 /**
  * @author Jack Young
@@ -32,6 +33,7 @@ import javax.persistence.Query;
  */
 
 @Stateless
+@WebService
 public class DataBean implements DataBeanRemote {
 
 //    private static final String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
