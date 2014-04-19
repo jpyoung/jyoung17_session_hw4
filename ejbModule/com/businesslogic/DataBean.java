@@ -59,7 +59,7 @@ public class DataBean implements DataBeanRemote {
 	
 	
 	
-	  public List<Student> retrieveAllSurveys() {
+	  public List<String> retrieveAllSurveys() {
 		  System.out.println("[INFO] - Method Called :=: retrieveAllSurveys");
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		    EntityManager em = factory.createEntityManager();
@@ -68,12 +68,17 @@ public class DataBean implements DataBeanRemote {
 		    q.setHint("eclipselink.refresh", "true");
 		    @SuppressWarnings("unchecked")
 			List<Student> s = q.getResultList();
+		    
+		    List<String> rt = new ArrayList<String>();
+		    for (int i = 0; i < s.size(); i++) {
+				rt.add(s.get(i).toStringEncode());
+			}
 		    em.close();
-		    return s;
+		    return rt;
 	  }
 
 	  
-	  public List<Student> searchByParameters(String last, String first, String cityy, String statee) {
+	  public List<String> searchByParameters(String last, String first, String cityy, String statee) {
 		  System.out.println("[INFO] - Method Called :=: searchByParameters");
 		  String qq = createQueryString(last, first, cityy, statee);
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -84,8 +89,13 @@ public class DataBean implements DataBeanRemote {
 		    q.setHint("eclipselink.refresh", "true");
 		    @SuppressWarnings("unchecked")
 			List<Student> s = q.getResultList();
+		    
+		    List<String> rt = new ArrayList<String>();
+		    for (int i = 0; i < s.size(); i++) {
+				rt.add(s.get(i).toStringEncode());
+			}
 		    em.close();
-		    return s;
+		    return rt;
 	  }
 	  
 	  

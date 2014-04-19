@@ -24,11 +24,11 @@ public interface DataBeanRemote {
 //	public boolean insertStudentSurveyRecord(Student newStudent,  EmContact emContact1, EmContact emContact2);
 
 	@WebMethod
-	public List<Student> searchByParameters(String last, String first, String cityy, String statee);
+	public List<String> searchByParameters(String last, String first, String cityy, String statee);
 //	
 //	 public boolean removeStudentRecord(int s_id);
 //	
 	@WebMethod
-	public List<Student> retrieveAllSurveys();
+	public List<String> retrieveAllSurveys();
 	
 }
